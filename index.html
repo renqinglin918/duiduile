@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>怼怼乐 - 专治各种不服</title>
+    <link rel="stylesheet" href="duidui-styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1>怼怼乐</h1>
+                <p class="subtitle">专治各种不服 | 拒绝EMO从我做起</p>
+                <p class="motto">东北老铁教你：怼人不带脏字，笑到他肚子疼</p>
+            </div>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="nav-btn active" data-tab="practice">实战训练场</button>
+            <button class="nav-btn" data-tab="learn">怼人秘籍</button>
+            <button class="nav-btn" data-tab="cases">成功案例</button>
+            <button class="nav-btn" data-tab="meme">动图生成器</button>
+        </nav>
+
+        <!-- 实战训练场 -->
+        <div class="tab-content active" id="practice">
+            <div class="practice-container">
+                <div class="scene-selector">
+                    <h3>选择场景</h3>
+                    <div class="scene-buttons">
+                        <button class="scene-btn active" data-scene="workplace">职场撕逼</button>
+                        <button class="scene-btn" data-scene="family">家庭大战</button>
+                        <button class="scene-btn" data-scene="friend">朋友互怼</button>
+                        <button class="scene-btn" data-scene="stranger">路见不平</button>
+                    </div>
+                </div>
+
+                <div class="dialog-box">
+                    <div class="dialog-header">
+                        <span class="opponent-avatar">👹</span>
+                        <span class="opponent-name">不讲理的人</span>
+                    </div>
+                    <div class="dialog-content">
+                        <div class="opponent-message" id="opponent-msg">
+                            "你天天加班有啥用啊，还不是没升职？"
+                        </div>
+                    </div>
+                    <div class="response-area">
+                        <input type="text" id="response-input" placeholder="来啊，互相伤害啊！输入你的回怼..." />
+                        <button class="send-btn" id="send-btn">怼回去</button>
+                    </div>
+                    <div class="suggestions">
+                        <p>💡 试试这些东北味儿回怼：</p>
+                        <div class="suggestion-buttons" id="suggestions-list">
+                            <button class="suggest-btn">你可真是咸吃萝卜淡操心，我升职不升职关你屁事！</button>
+                            <button class="suggest-btn">我加班是为了给老板打工，你操心是为了给自己添堵！</button>
+                            <button class="suggest-btn">我升不升职不知道，你再这么酸可就该升血压了！</button>
+                        </div>
+                    </div>
+                    <div class="result-feedback" id="result-feedback"></div>
+                </div>
+
+                <!-- 智能回怼生成器 -->
+                <div class="roast-generator-section">
+                    <div class="roast-header">
+                        <span class="roast-icon">⚔️</span>
+                        <h2>回怼生成器</h2>
+                    </div>
+                    
+                    <div class="roast-input-section">
+                        <label class="roast-label">输入对方的话：</label>
+                        <div class="roast-input-wrapper">
+                            <span class="input-icon">💬</span>
+                            <input type="text" id="roast-input" placeholder="在这里输入需要怼回去的话..." />
+                            <button class="roast-generate-btn" id="roast-generate-btn">🔥 生成回怼</button>
+                        </div>
+                    </div>
+                    
+                    <div class="roast-styles">
+                        <span class="styles-label">选择风格：</span>
+                        <div class="style-tags">
+                            <button class="style-tag active" data-style="northeast">东北话🔥</button>
+                            <button class="style-tag" data-style="shanghai">上海话💬</button>
+                            <button class="style-tag" data-style="cantonese">粤语🗣️</button>
+                            <button class="style-tag" data-style="sichuan">四川话🌶️</button>
+                            <button class="style-tag" data-style="universal">通用版🌐</button>
+                        </div>
+                    </div>
+                    
+                    <div class="roast-output-section" id="roast-output-section">
+                        <div class="output-header">
+                            <span class="output-icon">🎯</span>
+                            <span>生成的回怼：</span>
+                        </div>
+                        <div class="roast-results" id="roast-results">
+                            <div class="empty-state">
+                                <span>�</span>
+                                <p>输入一句话，点击生成按钮开始怼回去！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 怼人秘籍 -->
+        <div class="tab-content" id="learn">
+            <div class="learn-container">
+                <div class="tips-section">
+                    <h3>🔥 东北式怼人精髓</h3>
+                    <div class="tip-card">
+                        <h4>1. 比喻要生动，骂人不带脏字</h4>
+                        <p>"你瞅瞅你那脸跟狗舔了似的"</p>
+                        <p>"你插个尾巴就是个猴"</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4>2. 巧用押韵，自带节奏感</h4>
+                        <p>"今天你不是要当狗吗，我就牵绳溜你走"</p>
+                        <p>"不是咱的菜，咱就别掀那个破锅盖"</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4>3. 反客为主，让对方无语</h4>
+                        <p>"我来求职不是来受审的"</p>
+                        <p>"您问的问题有点没必要，简历上都写着呢"</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4>4. 借力打力，用对方的话怼回去</h4>
+                        <p>"张哥说得对，深度学习确实重要。正好您上周那个销售额算错小数点..."</p>
+                    </div>
+                </div>
+
+                <div class="books-section">
+                    <h3>📚 怼人必读书单</h3>
+                    <div class="book-card">
+                        <div class="book-cover">🔥</div>
+                        <div class="book-info">
+                            <h4>《说话就是生产力》</h4>
+                            <p>教你如何用语言保护自己</p>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-cover">💪</div>
+                        <div class="book-info">
+                            <h4>《非暴力沟通》</h4>
+                            <p>温柔而坚定地表达自己</p>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-cover">🤬</div>
+                        <div class="book-info">
+                            <h4>《好好说话2》</h4>
+                            <p>职场沟通技巧大全</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="thinking-section">
+                    <h3>🧠 怼人思维训练</h3>
+                    <div class="thinking-card">
+                        <h4>第一步：冷静观察，找到对方痛点</h4>
+                        <p>不要被情绪左右，先分析对方说话的目的和弱点</p>
+                    </div>
+                    <div class="thinking-card">
+                        <h4>第二步：抓住漏洞，精准反击</h4>
+                        <p>对方说的话里总有逻辑漏洞，抓住它放大</p>
+                    </div>
+                    <div class="thinking-card">
+                        <h4>第三步：幽默化解，让对方哭笑不得</h4>
+                        <p>用幽默的方式怼回去，既解气又不失风度</p>
+                    </div>
+                    <div class="thinking-card">
+                        <h4>第四步：见好就收，保持气场</h4>
+                        <p>怼完就走，不给对方反击的机会</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 成功案例 -->
+        <div class="tab-content" id="cases">
+            <div class="cases-container">
+                <div class="case-card">
+                    <div class="case-header">
+                        <span class="case-icon">💼</span>
+                        <h3>东北女孩求职狂怼张绍刚</h3>
+                    </div>
+                    <div class="case-content">
+                        <p><strong>场景：</strong>求职节目中，张绍刚故意刁难</p>
+                        <p><strong>对方挑衅：</strong>"你说话平时就是嘴比脑子快吧"</p>
+                        <p><strong>神回复：</strong>"刚哥，您不要紧张，我把您的话捋一捋"</p>
+                        <p><strong>结果：</strong>张绍刚当场求饶："不要伤害我"</p>
+                    </div>
+                    <div class="case-lesson">
+                        <strong>💡 学到了：</strong>反客为主，让对方自食其果
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <span class="case-icon">👩‍💼</span>
+                        <h3>同事抢功怎么办？</h3>
+                    </div>
+                    <div class="case-content">
+                        <p><strong>场景：</strong>周报汇报时，同事把你的方案说成自己的</p>
+                        <p><strong>对方挑衅：</strong>（把你的方案细节原封不动说成自己的）</p>
+                        <p><strong>神回复：</strong>"感谢赵哥喜欢我的创意，不过第三页的流程图是我昨晚画到三点的，您要不要也展示一下原始草稿？"</p>
+                        <p><strong>结果：</strong>对方当场尴尬，领导明辨是非</p>
+                    </div>
+                    <div class="case-lesson">
+                        <strong>💡 学到了：</strong>用事实说话，让对方无可辩驳
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <span class="case-icon">😏</span>
+                        <h3>阴阳怪气说你"真努力"</h3>
+                    </div>
+                    <div class="case-content">
+                        <p><strong>场景：</strong>你加班赶项目，同事阴阳怪气</p>
+                        <p><strong>对方挑衅：</strong>"哟，这么晚还在卷啊？真努力，不像我们躺平了"</p>
+                        <p><strong>神回复：</strong>"没办法，能力不够时间来凑。不像您，准点下班还能准时背锅，这才是真本事"</p>
+                        <p><strong>结果：</strong>对方灰溜溜走了</p>
+                    </div>
+                    <div class="case-lesson">
+                        <strong>💡 学到了：</strong>借力打力，反讽效果拉满
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <span class="case-icon">👊</span>
+                        <h3>东北妹子捉奸名场面</h3>
+                    </div>
+                    <div class="case-content">
+                        <p><strong>场景：</strong>帮闺蜜捉奸，手撕渣男</p>
+                        <p><strong>神回复：</strong>"今天你不是要当狗吗，我就牵绳溜你走，玩不死你我都不撒手"</p>
+                        <p><strong>神回复：</strong>"是你好看的皮囊难得一求，我看你那好看的皮囊也就500块钱一宿"</p>
+                        <p><strong>结果：</strong>渣男被怼得无地自容，全场叫好</p>
+                    </div>
+                    <div class="case-lesson">
+                        <strong>💡 学到了：</strong>押韵+比喻，怼人更有节奏感
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 动图生成器 -->
+        <div class="tab-content" id="meme">
+            <div class="meme-container">
+                <h3>🎨 怼怼动图生成器</h3>
+                <p class="meme-desc">上传图片，配上犀利的回怼文字，生成专属表情包！</p>
+                
+                <div class="meme-upload-section">
+                    <div class="upload-area" id="upload-area">
+                        <input type="file" id="image-upload" accept="image/*" />
+                        <label for="image-upload" class="upload-label">
+                            <span class="upload-icon">📤</span>
+                            <p>点击上传图片</p>
+                            <p class="upload-hint">支持 JPG、PNG、GIF 格式</p>
+                        </label>
+                        <div class="preview-container" id="preview-container"></div>
+                    </div>
+                </div>
+
+                <div class="meme-text-section">
+                    <h4>📝 添加回怼文字</h4>
+                    <div class="text-input-group">
+                        <label>上方文字（可选）</label>
+                        <input type="text" id="top-text" placeholder="输入上方文字..." />
+                    </div>
+                    <div class="text-input-group">
+                        <label>下方文字（回怼金句）</label>
+                        <input type="text" id="bottom-text" placeholder="输入犀利的回怼金句..." />
+                    </div>
+                    
+                    <div class="preset-jokes">
+                        <p>🔥 试试这些回怼金句：</p>
+                        <div class="joke-buttons">
+                            <button class="joke-btn" data-text="你可真是咸吃萝卜淡操心！">你可真是咸吃萝卜淡操心！</button>
+                            <button class="joke-btn" data-text="我看你是厕所里点灯——找屎！">我看你是厕所里点灯——找屎！</button>
+                            <button class="joke-btn" data-text="你算老几？轮得到你说话？">你算老几？轮得到你说话？</button>
+                            <button class="joke-btn" data-text="你行你上啊！不行别BB！">你行你上啊！不行别BB！</button>
+                            <button class="joke-btn" data-text="我怼你是给你面子！">我怼你是给你面子！</button>
+                            <button class="joke-btn" data-text="就你这智商，还敢出来混？">就你这智商，还敢出来混？</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="meme-preview-section">
+                    <h4>👁️ 预览效果</h4>
+                    <div class="canvas-container">
+                        <canvas id="meme-canvas"></canvas>
+                        <div class="canvas-placeholder" id="canvas-placeholder">
+                            <span>🎭</span>
+                            <p>上传图片后预览效果</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="meme-actions">
+                    <button class="generate-btn" id="generate-btn">✨ 生成动图</button>
+                    <button class="download-btn" id="download-btn" disabled>💾 下载动图</button>
+                </div>
+
+                <div class="meme-templates">
+                    <h4>🎯 热门模板</h4>
+                    <div class="template-grid">
+                        <div class="template-item" data-url="https://neeko-copilot.bytedance.net/api/text2image?prompt=funny%20cat%20face%20meme%20template%20white%20background&image_size=square">
+                            <img src="https://neeko-copilot.bytedance.net/api/text2image?prompt=funny%20cat%20face%20meme%20template%20white%20background&image_size=square" alt="搞笑猫">
+                            <span>搞笑猫</span>
+                        </div>
+                        <div class="template-item" data-url="https://neeko-copilot.bytedance.net/api/text2image?prompt=surprised%20dog%20meme%20template%20funny&image_size=square">
+                            <img src="https://neeko-copilot.bytedance.net/api/text2image?prompt=surprised%20dog%20meme%20template%20funny&image_size=square" alt="惊讶狗">
+                            <span>惊讶狗</span>
+                        </div>
+                        <div class="template-item" data-url="https://neeko-copilot.bytedance.net/api/text2image?prompt=thinking%20man%20meme%20template%20cartoon&image_size=square">
+                            <img src="https://neeko-copilot.bytedance.net/api/text2image?prompt=thinking%20man%20meme%20template%20cartoon&image_size=square" alt="思考者">
+                            <span>思考者</span>
+                        </div>
+                        <div class="template-item" data-url="https://neeko-copilot.bytedance.net/api/text2image?prompt=angry%20bird%20meme%20template%20funny&image_size=square">
+                            <img src="https://neeko-copilot.bytedance.net/api/text2image?prompt=angry%20bird%20meme%20template%20funny&image_size=square" alt="愤怒鸟">
+                            <span>愤怒鸟</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>怼怼乐 - 让生活充满欢乐 | 拒绝EMO，从我做起</p>
+            <p class="disclaimer">⚠️ 本网站仅供娱乐，现实生活中请友善待人</p>
+        </footer>
+    </div>
+
+    <script src="duidui-script.js"></script>
+</body>
+</html>
