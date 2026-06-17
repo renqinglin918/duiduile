@@ -14,6 +14,15 @@
                 <p class="subtitle">专治各种不服 | 拒绝EMO从我做起</p>
                 <p class="motto">东北老铁教你：怼人不带脏字，笑到他肚子疼</p>
             </div>
+            <div class="auth-buttons">
+                <button class="login-btn" id="login-btn">登录</button>
+                <button class="register-btn" id="register-btn">注册</button>
+                <div class="user-info" id="user-info" style="display: none;">
+                    <span class="username" id="username">用户</span>
+                    <span class="member-badge" id="member-badge">免费版</span>
+                    <button class="logout-btn" id="logout-btn">退出</button>
+                </div>
+            </div>
         </header>
 
         <nav class="nav-tabs">
@@ -21,6 +30,7 @@
             <button class="nav-btn" data-tab="learn">怼人秘籍</button>
             <button class="nav-btn" data-tab="cases">成功案例</button>
             <button class="nav-btn" data-tab="meme">动图生成器</button>
+            <button class="nav-btn" data-tab="member">会员订阅</button>
         </nav>
 
         <!-- 实战训练场 -->
@@ -42,14 +52,17 @@
                         <span class="opponent-name">不讲理的人</span>
                     </div>
                     <div class="dialog-content">
-                        <div class="opponent-message" id="opponent-msg">
-                            "你天天加班有啥用啊，还不是没升职？"
+                        <div class="opponent-input-area">
+                            <label>对方说的话：</label>
+                            <textarea id="opponent-input" placeholder="在这里输入对方说的话，例如：&#10;你天天加班有啥用啊，还不是没升职？&#10;你都多大了还不结婚？" rows="3"></textarea>
                         </div>
                     </div>
+                    
                     <div class="response-area">
-                        <input type="text" id="response-input" placeholder="来啊，互相伤害啊！输入你的回怼..." />
-                        <button class="send-btn" id="send-btn">怼回去</button>
+                        <input type="text" id="response-input" placeholder="点击下方生成的回怼，自动填入这里..." />
+                        <button class="send-btn" id="send-btn">生成回怼</button>
                     </div>
+                    
                     <div class="suggestions">
                         <p>💡 试试这些东北味儿回怼：</p>
                         <div class="suggestion-buttons" id="suggestions-list">
@@ -68,35 +81,40 @@
                         <h2>回怼生成器</h2>
                     </div>
                     
-                    <div class="roast-input-section">
-                        <label class="roast-label">输入对方的话：</label>
-                        <div class="roast-input-wrapper">
-                            <span class="input-icon">💬</span>
-                            <input type="text" id="roast-input" placeholder="在这里输入需要怼回去的话..." />
-                            <button class="roast-generate-btn" id="roast-generate-btn">🔥 生成回怼</button>
+                    <div class="roast-scenarios">
+                        <span class="scenarios-label">选择场景：</span>
+                        <div class="scenario-tags">
+                            <button class="scenario-tag active" data-scenario="work">职场</button>
+                            <button class="scenario-tag" data-scenario="family">家庭</button>
+                            <button class="scenario-tag" data-scenario="friend">朋友</button>
+                            <button class="scenario-tag" data-scenario="stranger">陌生人</button>
+                            <button class="scenario-tag" data-scenario="love">感情</button>
+                            <button class="scenario-tag" data-scenario="universal">通用</button>
                         </div>
                     </div>
                     
                     <div class="roast-styles">
                         <span class="styles-label">选择风格：</span>
                         <div class="style-tags">
-                            <button class="style-tag active" data-style="northeast">东北话🔥</button>
-                            <button class="style-tag" data-style="shanghai">上海话💬</button>
-                            <button class="style-tag" data-style="cantonese">粤语🗣️</button>
-                            <button class="style-tag" data-style="sichuan">四川话🌶️</button>
-                            <button class="style-tag" data-style="universal">通用版🌐</button>
+                            <button class="style-tag active" data-style="northeast">东北话</button>
+                            <button class="style-tag" data-style="shanghai">上海话</button>
+                            <button class="style-tag" data-style="cantonese">粤语</button>
+                            <button class="style-tag" data-style="sichuan">四川话</button>
+                            <button class="style-tag" data-style="universal">通用版</button>
                         </div>
                     </div>
+                    
+                    <button class="roast-generate-btn" id="roast-generate-btn">🔥 生成有力度的回怼</button>
                     
                     <div class="roast-output-section" id="roast-output-section">
                         <div class="output-header">
                             <span class="output-icon">🎯</span>
-                            <span>生成的回怼：</span>
+                            <span>生成的回怼（点击可使用）：</span>
                         </div>
                         <div class="roast-results" id="roast-results">
                             <div class="empty-state">
-                                <span>�</span>
-                                <p>输入一句话，点击生成按钮开始怼回去！</p>
+                                <span>💭</span>
+                                <p>选择场景和风格，点击按钮生成回怼！</p>
                             </div>
                         </div>
                     </div>
@@ -332,6 +350,162 @@
             <p>怼怼乐 - 让生活充满欢乐 | 拒绝EMO，从我做起</p>
             <p class="disclaimer">⚠️ 本网站仅供娱乐，现实生活中请友善待人</p>
         </footer>
+
+        <!-- 登录/注册模态框 -->
+        <div class="modal-overlay" id="modal-overlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 id="modal-title">登录</h2>
+                    <button class="close-modal-btn" id="close-modal-btn">×</button>
+                </div>
+                <div class="modal-body">
+                    <form id="auth-form">
+                        <div class="form-group">
+                            <label>手机号/邮箱</label>
+                            <input type="text" id="auth-account" placeholder="请输入手机号或邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <label>密码</label>
+                            <input type="password" id="auth-password" placeholder="请输入密码" required>
+                        </div>
+                        <div class="form-group">
+                            <label>确认密码</label>
+                            <input type="password" id="auth-password-confirm" placeholder="请再次输入密码" required>
+                        </div>
+                        <div class="form-options">
+                            <label>
+                                <input type="checkbox" id="remember-me"> 记住我
+                            </label>
+                        </div>
+                        <button type="submit" class="submit-btn" id="auth-submit">登录</button>
+                    </form>
+                    <div class="auth-switch">
+                        <span id="auth-switch-text">还没有账号？</span>
+                        <button class="switch-btn" id="auth-switch-btn">立即注册</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 会员订阅区域 -->
+        <div class="tab-content" id="member">
+            <div class="member-container">
+                <div class="member-header">
+                    <h2>📦 会员订阅</h2>
+                    <p>解锁更多强大功能，成为怼人王者！</p>
+                </div>
+
+                <div class="member-plans">
+                    <div class="plan-card free-plan">
+                        <div class="plan-badge">免费版</div>
+                        <h3>入门版</h3>
+                        <div class="price">
+                            <span class="currency">¥</span>
+                            <span class="amount">0</span>
+                            <span class="period">永久</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✓ 基础回怼生成</li>
+                            <li>✓ 每日3次生成机会</li>
+                            <li>✓ 东北话风格</li>
+                            <li>✓ 基础场景选择</li>
+                            <li>✗ 高级风格（上海话、粤语、四川话）</li>
+                            <li>✗ 无限生成次数</li>
+                            <li>✗ 动图生成器</li>
+                            <li>✗ AI智能匹配</li>
+                        </ul>
+                        <button class="plan-btn" id="free-plan-btn">免费使用</button>
+                    </div>
+
+                    <div class="plan-card monthly-plan">
+                        <div class="plan-badge">月卡</div>
+                        <h3>月度会员</h3>
+                        <div class="price">
+                            <span class="currency">¥</span>
+                            <span class="amount">19</span>
+                            <span class="period">/月</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✓ 基础回怼生成</li>
+                            <li>✓ 每日30次生成机会</li>
+                            <li>✓ 全部方言风格</li>
+                            <li>✓ 全部场景选择</li>
+                            <li>✓ 动图生成器</li>
+                            <li>✗ AI智能匹配</li>
+                            <li>✗ 专属客服</li>
+                        </ul>
+                        <button class="plan-btn" id="monthly-plan-btn">立即订阅</button>
+                    </div>
+
+                    <div class="plan-card quarterly-plan">
+                        <div class="plan-badge">季卡</div>
+                        <h3>季度会员</h3>
+                        <div class="price">
+                            <span class="currency">¥</span>
+                            <span class="amount">49</span>
+                            <span class="period">/季</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✓ 基础回怼生成</li>
+                            <li>✓ 每日100次生成机会</li>
+                            <li>✓ 全部方言风格</li>
+                            <li>✓ 全部场景选择</li>
+                            <li>✓ 动图生成器</li>
+                            <li>✓ AI智能匹配</li>
+                            <li>✗ 专属客服</li>
+                        </ul>
+                        <button class="plan-btn" id="quarterly-plan-btn">立即订阅</button>
+                    </div>
+
+                    <div class="plan-card yearly-plan">
+                        <div class="plan-badge">年卡</div>
+                        <h3>年度会员</h3>
+                        <div class="price">
+                            <span class="currency">¥</span>
+                            <span class="amount">128</span>
+                            <span class="period">/年</span>
+                        </div>
+                        <div class="discount-badge">省50%</div>
+                        <ul class="plan-features">
+                            <li>✓ 基础回怼生成</li>
+                            <li>✓ 无限生成次数</li>
+                            <li>✓ 全部方言风格</li>
+                            <li>✓ 全部场景选择</li>
+                            <li>✓ 动图生成器</li>
+                            <li>✓ AI智能匹配</li>
+                            <li>✓ 专属客服</li>
+                        </ul>
+                        <button class="plan-btn" id="yearly-plan-btn">立即订阅</button>
+                    </div>
+                </div>
+
+                <div class="member-benefits">
+                    <h3>🎁 会员专属权益</h3>
+                    <div class="benefit-grid">
+                        <div class="benefit-item">
+                            <span class="benefit-icon">⚡</span>
+                            <h4>无限火力</h4>
+                            <p>想怼就怼，不限次数</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🎭</span>
+                            <h4>百变风格</h4>
+                            <p>东北话、上海话、粤语、四川话</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🖼️</span>
+                            <h4>动图制作</h4>
+                            <p>一键生成专属表情包</p>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🧠</span>
+                            <h4>AI智能</h4>
+                            <p>智能分析对方语言，精准回怼</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="duidui-script.js"></script>
