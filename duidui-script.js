@@ -794,6 +794,22 @@ function initMemeGenerator() {
                 canvasCtx.fillText(line, canvas.width / 2, y);
             });
         }
+        
+        // 添加水印
+        canvasCtx.font = 'bold 14px Arial, sans-serif';
+        canvasCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+        canvasCtx.strokeStyle = 'rgba(0, 0, 0, 0.5)';
+        canvasCtx.lineWidth = 2;
+        canvasCtx.textAlign = 'right';
+        canvasCtx.textBaseline = 'bottom';
+        
+        const watermarkText = '怼怼乐生成';
+        const padding = 10;
+        const x = canvas.width - padding;
+        const y = canvas.height - padding;
+        
+        canvasCtx.strokeText(watermarkText, x, y);
+        canvasCtx.fillText(watermarkText, x, y);
     }
     
     function wrapText(text, maxWidth) {
